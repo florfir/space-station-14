@@ -46,6 +46,7 @@ using Content.Shared.SS220.Language.Systems;
 using Content.Shared.SS220.TTS;
 using Content.Shared.FixedPoint;
 using Content.Shared.GameTicking;
+using Content.Shared.Speech.Components; // SS220-Fix-Cough
 using Content.Shared.SS220.TTS.Prototypes;
 using Content.Shared.SS220.TTS.Systems;
 
@@ -890,7 +891,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         if (foundEnglish)
         {
-            emoteStr = "кашляет";
+            emoteStr = HasComp<VocalComponent>(source) ? Loc.GetString("chat-emote-msg-cough") : null; // SS220 FIX cough
             return string.Empty;
         }
 
